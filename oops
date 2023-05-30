@@ -1,8 +1,10 @@
 # create a class name ATM
+#
 class Atm:
     def __init__(self):
-        self.pin = ""
-        self.balance = 0
+        self.__pin = ""
+        self.__balance = 0
+
         self.menu()
 
     def menu(self):
@@ -28,15 +30,15 @@ class Atm:
             print("Thank You !!!! Visit Again")
 
     def create_pin(self):
-        self.pin=input("Enter your pin number -> ")
-        print("Your pin is",self.pin)
+        self.__pin=input("Enter your pin number -> ")
+        print("Your pin is",self.__pin)
         self.menu()
 
     def deposit(self):
         temp=input("Enter your pin -> ")
-        if temp == self.pin:
+        if temp == self.__pin:
             amount=int(input("Enter the amount to deposit: "))
-            self.balance=self.balance+amount
+            self.__balance=self.__balance+amount
             print("Deposit successfully.")
         else:
             print("Invalid pin")
@@ -44,10 +46,10 @@ class Atm:
 
     def withdraw(self):
         temp=input("enter your pin -> ")
-        if temp == self.pin:
+        if temp == self.__pin:
             amount=int(input("Enter the amount to withdraw: "))
-            if amount <= self.balance:
-                self.balance=self.balance-amount
+            if amount <= self.__balance:
+                self.__balance=self.__balance-amount
                 print("Withdraw successful")
             else:
                 print("Insufficient balance")
@@ -57,8 +59,8 @@ class Atm:
 
     def check_balance(self):
         temp=input("enter your pin -> ")
-        if temp == self.pin:
-            print("Your balance is Rs. ",self.balance)
+        if temp == self.__pin:
+            print("Your balance is Rs. ",self.__balance)
         else:
             print("Invalid pin")
         self.menu()
